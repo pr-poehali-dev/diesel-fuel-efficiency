@@ -5,7 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
 
 export default function Index() {
-  const [activeSection, setActiveSection] = useState('intro');
+  const [activeSection, setActiveSection] = useState('title');
 
   const fuelComparison = [
     { name: 'Дизельное топливо', efficiency: 42, emissions: 85, cost: 100 },
@@ -37,6 +37,8 @@ export default function Index() {
           
           <nav className="flex gap-2 overflow-x-auto pb-2">
             {[
+              { id: 'title', label: 'Титульный лист', icon: 'FileText' },
+              { id: 'content', label: 'Содержание', icon: 'List' },
               { id: 'intro', label: 'Введение', icon: 'FileText' },
               { id: 'theory', label: 'Теория', icon: 'Book' },
               { id: 'analysis', label: 'Анализ', icon: 'BarChart3' },
@@ -63,49 +65,138 @@ export default function Index() {
       </header>
 
       <main className="container mx-auto px-6 py-12">
-        {activeSection === 'intro' && (
-          <div className="animate-fade-in space-y-6">
-            <Card className="bg-slate-900/50 border-slate-800">
-              <CardHeader>
-                <CardTitle className="text-white flex items-center gap-3">
-                  <Icon name="Target" className="text-sky-400" />
-                  Цель работы
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="text-slate-300 space-y-4">
-                <p className="text-lg">
-                  Исследование и разработка методов повышения эффективности системы питания дизельного двигателя 
-                  для работы на альтернативных видах топлива с сохранением экологических показателей.
-                </p>
-                <div className="grid md:grid-cols-3 gap-4 mt-6">
-                  <div className="p-4 bg-sky-500/10 border border-sky-500/30 rounded-lg">
-                    <Icon name="Fuel" className="text-sky-400 mb-2" size={32} />
-                    <h3 className="font-semibold text-white mb-1">Альтернативное топливо</h3>
-                    <p className="text-sm text-slate-400">Биодизель, синтетическое топливо</p>
+        {activeSection === 'title' && (
+          <div className="animate-fade-in max-w-4xl mx-auto">
+            <Card className="bg-white border-slate-300 shadow-lg">
+              <CardContent className="p-16">
+                <div className="text-center space-y-8">
+                  <div className="space-y-2">
+                    <p className="text-sm text-slate-600">МИНИСТЕРСТВО НАУКИ И ВЫСШЕГО ОБРАЗОВАНИЯ</p>
+                    <p className="text-sm text-slate-600">РОССИЙСКОЙ ФЕДЕРАЦИИ</p>
+                    <p className="text-sm font-semibold text-slate-700 mt-4">Федеральное государственное бюджетное образовательное учреждение</p>
+                    <p className="text-sm font-semibold text-slate-700">высшего образования</p>
+                    <p className="text-sm font-bold text-slate-800 mt-2">«МОСКОВСКИЙ ПОЛИТЕХНИЧЕСКИЙ УНИВЕРСИТЕТ»</p>
                   </div>
-                  <div className="p-4 bg-orange-500/10 border border-orange-500/30 rounded-lg">
-                    <Icon name="Zap" className="text-orange-400 mb-2" size={32} />
-                    <h3 className="font-semibold text-white mb-1">Повышение КПД</h3>
-                    <p className="text-sm text-slate-400">До 48% эффективности</p>
+
+                  <div className="border-t-2 border-b-2 border-slate-300 py-12 my-12">
+                    <p className="text-xs uppercase tracking-wider text-slate-600 mb-8">КУРСОВОЙ ПРОЕКТ</p>
+                    <p className="text-xs text-slate-600 mb-2">по дисциплине</p>
+                    <p className="text-sm font-semibold text-slate-800 mb-6">«Двигатели внутреннего сгорания»</p>
+                    <p className="text-xs text-slate-600 mb-2">на тему:</p>
+                    <h1 className="text-lg font-bold text-slate-900 leading-relaxed px-8">
+                      ПОВЫШЕНИЕ ЭФФЕКТИВНОСТИ СИСТЕМЫ ПИТАНИЯ ДИЗЕЛЬНОГО ДВИГАТЕЛЯ ДЛЯ РАБОТЫ НА АЛЬТЕРНАТИВНОМ ТОПЛИВЕ
+                    </h1>
                   </div>
-                  <div className="p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-lg">
-                    <Icon name="Leaf" className="text-emerald-400 mb-2" size={32} />
-                    <h3 className="font-semibold text-white mb-1">Экология</h3>
-                    <p className="text-sm text-slate-400">Снижение выбросов на 40%</p>
+
+                  <div className="flex justify-end text-left space-y-3">
+                    <div className="text-sm text-slate-700">
+                      <p>Выполнил: студент гр. 221-331</p>
+                      <p className="mt-1">Иванов И.И.</p>
+                      <p className="mt-4">Проверил: к.т.н., доцент</p>
+                      <p className="mt-1">Петров П.П.</p>
+                    </div>
+                  </div>
+
+                  <div className="mt-16">
+                    <p className="text-sm text-slate-700">Москва 2025</p>
                   </div>
                 </div>
               </CardContent>
             </Card>
+          </div>
+        )}
 
-            <Card className="bg-slate-900/50 border-slate-800">
-              <CardHeader>
-                <CardTitle className="text-white">Актуальность</CardTitle>
-              </CardHeader>
-              <CardContent className="text-slate-300 space-y-3">
-                <p>• Необходимость снижения зависимости от ископаемого топлива</p>
-                <p>• Ужесточение экологических норм Euro 6 и выше</p>
-                <p>• Потребность в повышении экономической эффективности</p>
-                <p>• Развитие технологий производства биотоплива</p>
+        {activeSection === 'content' && (
+          <div className="animate-fade-in max-w-4xl mx-auto">
+            <Card className="bg-white border-slate-300 shadow-lg">
+              <CardContent className="p-12">
+                <h2 className="text-2xl font-bold text-center text-slate-900 mb-8">СОДЕРЖАНИЕ</h2>
+                <div className="space-y-3 text-slate-800">
+                  <div className="flex justify-between border-b border-dotted border-slate-300 pb-1">
+                    <button onClick={() => setActiveSection('intro')} className="hover:text-sky-600 text-left">ВВЕДЕНИЕ</button>
+                    <span>3</span>
+                  </div>
+                  <div className="flex justify-between border-b border-dotted border-slate-300 pb-1">
+                    <button onClick={() => setActiveSection('theory')} className="hover:text-sky-600 text-left">1. ТЕОРЕТИЧЕСКАЯ ЧАСТЬ</button>
+                    <span>5</span>
+                  </div>
+                  <div className="flex justify-between border-b border-dotted border-slate-300 pb-1 pl-6">
+                    <span className="text-sm">1.1. Принцип работы системы питания</span>
+                    <span className="text-sm">5</span>
+                  </div>
+                  <div className="flex justify-between border-b border-dotted border-slate-300 pb-1 pl-6">
+                    <span className="text-sm">1.2. Альтернативные виды топлива</span>
+                    <span className="text-sm">7</span>
+                  </div>
+                  <div className="flex justify-between border-b border-dotted border-slate-300 pb-1">
+                    <button onClick={() => setActiveSection('analysis')} className="hover:text-sky-600 text-left">2. АНАЛИЗ СУЩЕСТВУЮЩИХ СИСТЕМ</button>
+                    <span>10</span>
+                  </div>
+                  <div className="flex justify-between border-b border-dotted border-slate-300 pb-1 pl-6">
+                    <span className="text-sm">2.1. Сравнительный анализ видов топлива</span>
+                    <span className="text-sm">10</span>
+                  </div>
+                  <div className="flex justify-between border-b border-dotted border-slate-300 pb-1 pl-6">
+                    <span className="text-sm">2.2. Преимущества и недостатки</span>
+                    <span className="text-sm">12</span>
+                  </div>
+                  <div className="flex justify-between border-b border-dotted border-slate-300 pb-1">
+                    <button onClick={() => setActiveSection('schemes')} className="hover:text-sky-600 text-left">3. ТЕХНИЧЕСКИЕ СХЕМЫ И ЧЕРТЕЖИ</button>
+                    <span>15</span>
+                  </div>
+                  <div className="flex justify-between border-b border-dotted border-slate-300 pb-1">
+                    <button onClick={() => setActiveSection('calc')} className="hover:text-sky-600 text-left">4. РАСЧЕТНАЯ ЧАСТЬ</button>
+                    <span>18</span>
+                  </div>
+                  <div className="flex justify-between border-b border-dotted border-slate-300 pb-1 pl-6">
+                    <span className="text-sm">4.1. Технические характеристики</span>
+                    <span className="text-sm">18</span>
+                  </div>
+                  <div className="flex justify-between border-b border-dotted border-slate-300 pb-1 pl-6">
+                    <span className="text-sm">4.2. Расчет эффективного КПД</span>
+                    <span className="text-sm">19</span>
+                  </div>
+                  <div className="flex justify-between border-b border-dotted border-slate-300 pb-1">
+                    <button onClick={() => setActiveSection('results')} className="hover:text-sky-600 text-left">5. РЕЗУЛЬТАТЫ И ВЫВОДЫ</button>
+                    <span>22</span>
+                  </div>
+                  <div className="flex justify-between border-b border-dotted border-slate-300 pb-1">
+                    <button onClick={() => setActiveSection('refs')} className="hover:text-sky-600 text-left">СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ</button>
+                    <span>25</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        )}
+
+        {activeSection === 'intro' && (
+          <div className="animate-fade-in space-y-6 max-w-4xl mx-auto">
+            <Card className="bg-white border-slate-300 shadow-lg">
+              <CardContent className="p-12">
+                <h2 className="text-2xl font-bold text-center text-slate-900 mb-8">ВВЕДЕНИЕ</h2>
+                <div className="text-slate-800 space-y-4 leading-relaxed">
+                <p className="text-justify indent-8">
+                  Актуальность темы исследования обусловлена необходимостью снижения зависимости от ископаемого топлива и ужесточением экологических норм Euro 6 и выше. Применение альтернативных видов топлива в дизельных двигателях становится одним из приоритетных направлений развития автомобильной промышленности.
+                </p>
+                <p className="text-justify indent-8">
+                  Целью данной работы является исследование и разработка методов повышения эффективности системы питания дизельного двигателя для работы на альтернативных видах топлива с сохранением экологических показателей.
+                </p>
+                <p className="text-justify indent-8">
+                  Для достижения поставленной цели необходимо решить следующие задачи:
+                </p>
+                <ul className="list-none space-y-2 ml-8">
+                  <li>— изучить принципы работы системы питания дизельного двигателя;</li>
+                  <li>— провести анализ существующих альтернативных видов топлива;</li>
+                  <li>— выполнить сравнительный анализ эффективности различных видов топлива;</li>
+                  <li>— разработать предложения по модернизации системы питания;</li>
+                  <li>— произвести расчет технико-экономической эффективности.</li>
+                </ul>
+                <p className="text-justify indent-8">
+                  Объектом исследования является система питания дизельного двигателя мощностью 150 кВт. Предметом исследования выступают методы повышения эффективности работы двигателя на альтернативном топливе.
+                </p>
+                <p className="text-justify indent-8">
+                  Практическая значимость работы заключается в возможности применения разработанных рекомендаций при модернизации существующих систем питания дизельных двигателей для работы на биодизеле и других альтернативных видах топлива.
               </CardContent>
             </Card>
           </div>
